@@ -2,9 +2,19 @@
 
 <h1>Listing Apartments</h1>
 
+<form method="get" method="/apartments">
+  <input type="text" name="search" />
+  <input type="submit" value="Search" />
+</form>
+
+<!--  render the results from the controller here, probably as erb -->
+
+<br>
+
 <table>
   <thead>
     <tr>
+      <th>image</th>
       <th>Street </th>
       <th>Apt# </th>
       <th>City </th>
@@ -23,6 +33,7 @@
   <tbody>
     <% @apartments.each do |apartment| %>
       <tr>
+        <td><%= image_tag(apartment.image.url(:large)) %></td>
         <td><%= apartment.street %></td>
         <td><%= apartment.apt_num %></td>
         <td><%= apartment.city %></td>
